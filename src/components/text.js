@@ -9,9 +9,11 @@ const Text = ({ classNames, value }) => (
         return (<Verse key={i} number={x.verse} />);
       }
 
-      return (
-        <span key={i}>{x}</span>
-      );
+      if (x.text) {
+        return (<span key={i}>{x.text}</span>);
+      }
+
+      return null;
     })}
   </p>
 );
