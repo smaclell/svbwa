@@ -1,11 +1,18 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
+import Story from '../components/story';
+import Footer from '../components/footer';
+
+const content = [
+  { "type": "text", "text": [{ "verse": 1 }, "In the beginning"] },
+  { "type": "speech", "source": "rob", "color": "blue", "text": ["In the derp"] }
+];
+
 const SecondPage = () => (
   <div>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
+    <Story content={content} />
+    <Footer copyright="Something" />
   </div>
 )
 

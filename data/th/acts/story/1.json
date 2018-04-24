@@ -1,0 +1,9 @@
+{
+  "title": "Story 1",
+  "reference": "Acts 1:1-26",
+  "phrase": "Hai Rob",
+  "content": [
+    { "type": "text", "text": [{ "verse": 1 }, "In the beginning"] },
+    { "type": "speech", "source": "rob", "color": "blue", "text": ["In the derp"] }
+  ]
+}

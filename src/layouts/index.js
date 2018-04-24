@@ -4,6 +4,11 @@ import Helmet from 'react-helmet'
 
 import Header from '../components/header'
 import './index.css'
+// import './ionicons.min.css' // Needed to copy fonts
+import './letter.css'
+import './main.css'
+import './story.css'
+import './TOC.css'
 
 const Layout = ({ children, data }) => (
   <div>

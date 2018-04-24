@@ -1,0 +1,203 @@
+body {
+    max-width: 1080px;
+    margin: 0 auto;
+    float: none;
+    font-size: 60px;
+    padding: 1% 2% 1% 1%;
+    letter-spacing: 0.75px;
+}
+
+h2 {
+    font-size: 125%;
+    color: #000;
+    text-align: center;
+    margin-bottom: 3px;
+    margin-top: 0px;
+}
+
+.story-title {
+    margin-top: 50px;
+}
+
+.reference {
+    text-align: right;
+    color: dimgrey;
+    font-style: italic;
+    font-size: 70%;
+    padding: 0 2%;
+    margin-bottom: 5px;
+}
+
+.letter{
+    width:102%;
+    height: 100%;
+    margin-left: -1%;
+    margin-right: 0%;
+    background-color: #fff;
+}
+
+.icon{
+    width: 50%;
+    padding: 50px 25%;
+}
+
+.text { 
+    font-size: 100%;
+    font-family: 'Sriracha', cursive;
+}
+
+.verse {
+    font-family: sans-serif;
+    font-style: normal;
+    display: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+sup {
+    font-size: 50%;
+}
+.letterbody {
+    margin-top: -84px;
+    margin-bottom: -70px;
+    background-image: url(/img/letter-body2.jpeg);
+    background-repeat: repeat;
+    background-size: 100% auto;
+    padding: 0 8% 0 8%;
+}
+
+/* ------ BUTTON BAR ------ */
+.nav-bar {
+    position:fixed;
+    bottom: 0px;
+    left:0;
+    width:100%;
+    height: 150px;
+    background:#000;
+    padding: 0;
+    font-size: 20px;
+}
+
+a {
+    color: #fff;
+    text-decoration: 
+}
+
+li {
+    display: inline-block;
+    color: #fff;
+    width: 24%;
+    height: 100px;
+    text-align: center;
+    padding: 0;
+    font-size: 80px;
+    margin-bottom: -10px;
+    text-decoration: none;
+}
+
+.verse-display {
+    font-size: 30px;
+    display: block;
+    float: left;
+    margin-left: 22%;
+}
+
+.wrap {
+  width: 100%;
+  margin: 20% auto;
+}
+
+.toggle {
+  position: relative;
+  width: 60%;
+  height: 50px;
+  border: 4px solid #f9f9f9;
+  border-radius: 40px;
+  margin-left: 15%;
+}
+
+.toggle input[type="checkbox"] {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.toggle .btn {
+  display: block;
+  position: absolute;
+  z-index: 4;
+  top: -1px;
+  left: 0px;
+  width: 45%;
+  height: 100%;
+  background: #F5F5F5;
+  border: 1px solid #e8e8e8;
+  border-radius: 100%;
+  box-shadow: 0 2px 4px rgba(100, 100, 100, 0.1);
+  transition: left .25s ease-in-out;
+}
+
+.toggle input[type="checkbox"]:checked ~ .btn {
+  left: 55%;
+}
+
+.toggle .texts {
+  position: absolute;
+  top: 9px;
+  z-index: 2;
+  width: 100%;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 25px;
+  margin-left: -60%;
+}
+
+
+.toggle .texts:before {
+  content: "เปิด";
+  position: absolute;
+  left: 20%;
+}
+
+.toggle .texts:after {
+  content: "ปิด";
+  position: absolute;
+  right: 5%;
+}
+
+.toggle .bg {
+  display: block;
+  background: #F56557;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  box-shadow: inset 0 0px 2px 1px rgba(0, 0, 0, 0.3);
+  transition: background .25s ease-in;
+}
+
+.toggle input[type="checkbox"]:checked ~ .bg {
+  background: #48C893;
+}
+
+/* ---- FOOTER ---- */
+footer {
+    color: #848484;
+    width: 100%;
+    height: auto;
+    font-size: 50%;
+    text-align: center;
+    line-height: 120%;
+    margin: 0 0 200px 0;
+}
