@@ -1,0 +1,35 @@
+Story
+  = (Paragraph / Quote)+
+
+Paragraph
+  = "<p>" content:Contents "</p>" _ { return { type: 'text', content } }
+
+Quote
+  = quote:(Jesus / Important / Extra) _ { return Object.assign({ type: 'quote' }, quote) }
+
+Jesus
+  = source:Source content:(_ "<h2>" inner:Contents "</h2>" { return inner })+ { return { color: "red", source, content: content[0].filter(c => c === Object(c)) } }
+Important
+  = source:Source content:(_ "<h3>" inner:Contents "</h3>" { return inner })+ { return { color: "green", source, content: content[0].filter(c => c === Object(c)) } }
+Extra
+  = source:Source content:(_ "<h4>" inner:Contents "</h4>" { return inner })+ { return { color: "blue", source, content: content[0].filter(c => c === Object(c)) } }
+
+Source
+  = "<h1>" source:Text "</h1>" { return source.text }
+
+Chapter
+  = "<strong>" chapter:Integer "</strong>" { return { chapter } }
+Verse
+  = "<u>" verse:Integer "</u>" { return { verse } }
+
+Contents
+  = (Chapter / Verse / Text)+
+
+Text
+  = [^<]+ { return { text: text() } }
+
+Integer "integer"
+  = _ [0-9]+ { return parseInt(text(), 10); }
+
+_ "whitespace"
+  = [ \t\n\r]*
