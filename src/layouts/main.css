@@ -17,7 +17,7 @@ img {
     padding: 2%;
 }
 h1 {
-    font-size:40px;
+    font-size: 1.2em;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -36,10 +36,10 @@ button {
   border-radius: 60px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 30px;
+  font-size: 1em;
   background: #3498db;
   padding: 10px 20px 15px 20px;
   border: solid #00578a 2px;
   text-decoration: none;
-  
+
 }

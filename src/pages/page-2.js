@@ -22,7 +22,8 @@ export const query = graphql`
             type
             source
             color
-            value {
+            content {
+              chapter
               verse
               text
             }
