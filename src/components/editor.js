@@ -35,7 +35,23 @@ class OurEditor extends Component {
     if (currentContentBlock.getType() === 'sup' || (/^\d+:?$/.test(selectedText))) {
       this.onChange(RichUtils.toggleBlockType(this.state.editorState, 'sup'));
     }
+  }
 
+  onAddQuote = (e) => {
+    e.preventDefault();
+    const contentState = this.state.editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      'QUOTE',
+      'MUTABLE',
+      { level: 1, source: 'Jesus' }
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const contentStateWithLink = Modifier.applyEntity(
+      contentStateWithEntity,
+      this.state.editorState.getSelection(),
+      entityKey
+    );
+    this.onChange(RichUtils.toggleBlockType(this.state.editorState, 'blockquote'));
   }
 
   render() {
@@ -43,6 +59,7 @@ class OurEditor extends Component {
       <div>
         <div>
           <button id="super" onClick={this.onSuperClick}>^</button>
+          <button id="quote" onClick={this.onAddQuote}>quote</button>
         </div>
         <Editor
           blockRendererFn={renderer}
