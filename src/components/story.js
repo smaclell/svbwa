@@ -10,7 +10,7 @@ const Story = ({ content }) => (
         return (<Paragraph key={i} {...x} />);
       }
 
-      if (x.type === 'speech') {
+      if (x.type === 'speech' || x.type === 'quote') {
         return (<Speech key={i} {...x} />);
       }
 
