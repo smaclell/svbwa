@@ -1,4 +1,4 @@
-import Sup from './sup';
+import { Sup } from './sup';
 
 export default function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType();

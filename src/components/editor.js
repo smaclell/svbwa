@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Editor, EditorState, Modifier, RichUtils } from 'draft-js';
 import "draft-js/dist/Draft.css";
 
+import decorators from './editor/decorators';
 import renderer from './editor/renderer';
 
 class OurEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = { editorState: EditorState.createEmpty(decorators) };
   }
   get editorState() { this.state.editorState; }
   onChange = editorState => this.setState({ editorState });
