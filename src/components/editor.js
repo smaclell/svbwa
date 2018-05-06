@@ -25,6 +25,7 @@ class OurEditor extends Component {
 
   onSuperClick = (e) => {
     e.preventDefault();
+    this.editor.focus();
     const selection = this.state.editorState.getSelection();
     const anchorKey = selection.getAnchorKey();
     const currentContent = this.state.editorState.getCurrentContent();
@@ -40,6 +41,7 @@ class OurEditor extends Component {
 
   onAddQuote = (e) => {
     e.preventDefault();
+    this.editor.focus();
     const contentState = this.state.editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
       'QUOTE',
@@ -63,6 +65,7 @@ class OurEditor extends Component {
           <button id="quote" onClick={this.onAddQuote}>quote</button>
         </div>
         <Editor
+          ref={r => this.editor = r}
           blockRendererFn={renderer}
           editorState={this.state.editorState}
           handleKeyCommand={this.handleKeyCommand}

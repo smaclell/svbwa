@@ -18,7 +18,7 @@ function wrapper(regex) {
 }
 
 const DecoratedComponent = ({ decoratedText }) => {
-  const match = decoratedText.match(/(C|V)(\d+)(:?)/);
+  const match = decoratedText.match(/([CV]?)(\d+)(:?)/);
 
   const isChapter = match[1] === 'C' || match[3];
   return isChapter ? <Chapter number={match[2]} /> : <Verse number={match[2]} />;
