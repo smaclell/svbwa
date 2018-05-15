@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Editor, EditorState, Modifier, RichUtils } from 'draft-js';
+import { Editor, EditorState, Modifier, RichUtils, convertToRaw } from 'draft-js';
 import "draft-js/dist/Draft.css";
 
 import decorators from './editor/decorators';
@@ -109,6 +109,8 @@ class OurEditor extends Component {
     this.onChange(b);
   }
 
+  onPrint = () => console.log(convertToRaw(this.state.editorState.getCurrentContent()))
+
   render() {
     return (
       <div>
@@ -116,6 +118,7 @@ class OurEditor extends Component {
           <button id="super" onClick={this.onSuperClick}>^</button>
           <button id="quote" onClick={this.onAddQuote}>quote</button>
           <button id="adjust" onClick={this.onNextStyle}>next</button>
+          <button id="print" onClick={this.onPrint}>print</button>
         </div>
         <Editor
           ref={r => this.editor = r}
