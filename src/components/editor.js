@@ -5,6 +5,28 @@ import "draft-js/dist/Draft.css";
 import decorators from './editor/decorators';
 import renderer from './editor/renderer';
 
+function myBlockStyleFn(contentBlock) {
+  const type = contentBlock.getType();
+  if (type === 'blockquote') {
+    return 'blockquote bubble';
+  }
+}
+
+const styleMap = {
+  blue: {
+    background: '#97bbff',
+    color: '#0c009d',
+  },
+  green: {
+    background: '#b9f8b9',
+    color: '#006400',
+  },
+  red: {
+    background: '#ffadad',
+    color: '#d60000',
+  },
+};
+
 class OurEditor extends Component {
   constructor(props) {
     super(props);
@@ -42,19 +64,49 @@ class OurEditor extends Component {
   onAddQuote = (e) => {
     e.preventDefault();
     this.editor.focus();
-    const contentState = this.state.editorState.getCurrentContent();
+    const currentState = this.state.editorState;
+    const contentState = currentState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
       'QUOTE',
       'MUTABLE',
-      { level: 1, source: 'Jesus' }
+      { color: 'red', source: 'Jesus' }
     );
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     const contentStateWithLink = Modifier.applyEntity(
       contentStateWithEntity,
-      this.state.editorState.getSelection(),
+      currentState.getSelection(),
       entityKey
     );
-    this.onChange(RichUtils.toggleBlockType(this.state.editorState, 'blockquote'));
+
+    const newEditorState = EditorState.push(currentState, contentStateWithLink, 'apply-entity');
+    const a = RichUtils.toggleBlockType(newEditorState, 'blockquote')
+    const b = RichUtils.toggleInlineStyle(a, 'red');
+
+    this.onChange(b);
+  }
+
+  onNextStyle = (e) => {
+    e.preventDefault();
+    this.editor.focus();
+    const currentState = this.state.editorState;
+    const contentState = currentState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      'QUOTE',
+      'MUTABLE',
+      { color: 'red', source: 'Jesus' }
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const contentStateWithLink = Modifier.applyEntity(
+      contentStateWithEntity,
+      currentState.getSelection(),
+      entityKey
+    );
+
+    const newEditorState = EditorState.push(currentState, contentStateWithLink, 'apply-entity');
+    const a = RichUtils.toggleBlockType(newEditorState, 'blockquote')
+    const b = RichUtils.toggleInlineStyle(b, 'bubble red');
+
+    this.onChange(b);
   }
 
   render() {
@@ -63,9 +115,12 @@ class OurEditor extends Component {
         <div>
           <button id="super" onClick={this.onSuperClick}>^</button>
           <button id="quote" onClick={this.onAddQuote}>quote</button>
+          <button id="adjust" onClick={this.onNextStyle}>next</button>
         </div>
         <Editor
           ref={r => this.editor = r}
+          customStyleMap={styleMap}
+          blockStyleFn={myBlockStyleFn}
           blockRendererFn={renderer}
           editorState={this.state.editorState}
           handleKeyCommand={this.handleKeyCommand}
